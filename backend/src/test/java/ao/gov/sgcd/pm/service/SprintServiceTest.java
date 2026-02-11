@@ -88,8 +88,8 @@ class SprintServiceTest {
         when(sprintMapper.toDto(sprint1)).thenReturn(dto1);
         when(sprintMapper.toDto(sprint2)).thenReturn(dto2);
 
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(1L)).thenReturn(Collections.nCopies(36, null));
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(2L)).thenReturn(Collections.nCopies(40, null));
+        when(taskRepository.countBySprintId(1L)).thenReturn(36);
+        when(taskRepository.countBySprintId(2L)).thenReturn(40);
 
         // when
         List<SprintDTO> result = sprintService.findAll();
@@ -132,7 +132,7 @@ class SprintServiceTest {
 
         SprintDTO dto = buildSprintDto(1L, 1, "Fundacao", SprintStatus.ACTIVE);
         when(sprintMapper.toDto(sprint)).thenReturn(dto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(1L)).thenReturn(Collections.nCopies(36, null));
+        when(taskRepository.countBySprintId(1L)).thenReturn(36);
 
         // when
         SprintDTO result = sprintService.findById(1L);
@@ -168,7 +168,7 @@ class SprintServiceTest {
 
         SprintDTO dto = buildSprintDto(2L, 2, "Backend Core", SprintStatus.ACTIVE);
         when(sprintMapper.toDto(active)).thenReturn(dto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(2L)).thenReturn(Collections.nCopies(40, null));
+        when(taskRepository.countBySprintId(2L)).thenReturn(40);
 
         // when
         SprintDTO result = sprintService.findActive();
@@ -191,7 +191,7 @@ class SprintServiceTest {
 
         SprintDTO dto = buildSprintDto(3L, 3, "Frontend", SprintStatus.PLANNED);
         when(sprintMapper.toDto(planned)).thenReturn(dto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(3L)).thenReturn(Collections.nCopies(30, null));
+        when(taskRepository.countBySprintId(3L)).thenReturn(30);
 
         // when
         SprintDTO result = sprintService.findActive();
@@ -299,7 +299,7 @@ class SprintServiceTest {
 
         SprintDTO mappedDto = buildSprintDto(1L, 1, "Fundacao", SprintStatus.COMPLETED);
         when(sprintMapper.toDto(any(Sprint.class))).thenReturn(mappedDto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(1L)).thenReturn(Collections.nCopies(36, null));
+        when(taskRepository.countBySprintId(1L)).thenReturn(36);
 
         // when
         SprintDTO result = sprintService.update(1L, inputDto);
@@ -322,7 +322,7 @@ class SprintServiceTest {
 
         SprintDTO mappedDto = buildSprintDto(1L, 1, "Fundacao", SprintStatus.ACTIVE);
         when(sprintMapper.toDto(any(Sprint.class))).thenReturn(mappedDto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(1L)).thenReturn(Collections.nCopies(36, null));
+        when(taskRepository.countBySprintId(1L)).thenReturn(36);
 
         // when
         SprintDTO result = sprintService.update(1L, inputDto);
@@ -356,7 +356,7 @@ class SprintServiceTest {
 
         SprintDTO dto = buildSprintDto(1L, 1, "Fundacao", SprintStatus.PLANNED);
         when(sprintMapper.toDto(sprint)).thenReturn(dto);
-        when(taskRepository.findBySprintIdOrderBySortOrderAsc(1L)).thenReturn(Collections.emptyList());
+        when(taskRepository.countBySprintId(1L)).thenReturn(0);
 
         // when
         SprintDTO result = sprintService.findById(1L);
