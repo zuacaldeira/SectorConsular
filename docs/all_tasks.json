@@ -1,0 +1,2814 @@
+{
+  "1": [
+    {
+      "date": "02/03",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Create GitHub organization and repositories",
+      "bullets": [
+        "Organization 'sgcd-angola': sgcd-backend, sgcd-frontend-backoffice, sgcd-frontend-portal, sgcd-infra, sgcd-docs",
+        "Branch protection rules and merge policies",
+        "PR and Issue templates in each repo"
+      ],
+      "coverage": "N/A",
+      "validation": "Clone OK, push blocked without PR"
+    },
+    {
+      "date": "03/03",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Maven multi-module structure",
+      "bullets": [
+        "Maven parent with modules: commons, gateway, registration-svc, scheduling-svc, passport-svc, civil-registry-svc,",
+        "Shared dependencies in parent POM (Spring Boot 3.x, Java 21)",
+        ".gitignore, .editorconfig, README.md"
+      ],
+      "coverage": "N/A",
+      "validation": "mvn clean compile without errors"
+    },
+    {
+      "date": "04/03",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Linting, hooks and contribution guidelines",
+      "bullets": [
+        "Checkstyle with Google Style",
+        "Commitlint + Husky (conventional commits)",
+        "CONTRIBUTING.md, CODE_OF_CONDUCT.md"
+      ],
+      "coverage": "N/A",
+      "validation": "Non-conventional commit rejected"
+    },
+    {
+      "date": "05/03",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Angular Backoffice structure",
+      "bullets": [
+        "Angular 17+ with standalone components",
+        "ESLint + Prettier configured",
+        "Jest/Karma with 80% threshold"
+      ],
+      "coverage": "N/A",
+      "validation": "ng build and ng test without errors"
+    },
+    {
+      "date": "06/03",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Angular Citizen Portal structure",
+      "bullets": [
+        "Angular Portal with i18n (@angular/localize)",
+        "Translations: PT, DE, EN, CS",
+        "PWA with basic service worker"
+      ],
+      "coverage": "N/A",
+      "validation": "ng build with each locale without errors"
+    },
+    {
+      "date": "15/03",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Complete CI/CD Pipeline",
+      "bullets": [
+        "ci-backend.yml: checkout → Java 21 → mvn test → JaCoCo",
+        "ci-frontend.yml: checkout → Node → npm ci → ng test → ng lint",
+        "SonarQube Cloud in workflows",
+        "Cache Maven and npm dependencies",
+        "Mandatory status checks",
+        "cd-staging.yml: Docker build → push GHCR → deploy",
+        "Document workflows in sgcd-infra",
+        "Test pipelines with test PR"
+      ],
+      "coverage": "N/A",
+      "validation": "Workflows OK, quality gates blocking"
+    },
+    {
+      "date": "16/03",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Multi-stage Backend Dockerfile",
+      "bullets": [
+        "Multi-stage Dockerfile for Spring Boot",
+        "Docker layers optimized for cache",
+        ".dockerignore"
+      ],
+      "coverage": "N/A",
+      "validation": "docker build OK, image < 300MB"
+    },
+    {
+      "date": "17/03",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Frontend Dockerfile + Nginx",
+      "bullets": [
+        "Multi-stage Dockerfile for Angular",
+        "nginx.conf: gzip, cache, SPA fallback, security headers",
+        "Build for backoffice + portal"
+      ],
+      "coverage": "N/A",
+      "validation": "Nginx serves app, secure headers"
+    },
+    {
+      "date": "18/03",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Docker Compose — Infrastructure",
+      "bullets": [
+        "docker-compose.yml: MySQL 8.0, Redis 7, Kafka + Zookeeper, MinIO",
+        "Healthchecks and depends_on",
+        "Persistent volumes"
+      ],
+      "coverage": "N/A",
+      "validation": "docker-compose up all healthy"
+    },
+    {
+      "date": "19/03",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Docker Compose — Application",
+      "bullets": [
+        "Services: backend, backoffice, portal, Keycloak",
+        "Networking between containers",
+        "Script start-dev.sh"
+      ],
+      "coverage": "N/A",
+      "validation": "start-dev.sh starts everything"
+    },
+    {
+      "date": "20/03",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Commons Module and Spring profiles",
+      "bullets": [
+        "Base DTOs: ApiResponse, PageResponse, ErrorResponse",
+        "Exceptions: ResourceNotFoundException, BusinessException",
+        "Spring profiles: dev, staging, prod"
+      ],
+      "coverage": "N/A",
+      "validation": "Unit tests DTOs and exceptions"
+    },
+    {
+      "date": "22/03",
+      "day": "Sun",
+      "hours": 10,
+      "title": "GlobalExceptionHandler, Flyway, Actuator",
+      "bullets": [
+        "GlobalExceptionHandler: exceptions → HTTP status",
+        "Flyway with V1__create_audit_table.sql",
+        "Seed script for initial data",
+        "Actuator: health, info, metrics, prometheus",
+        "Structured RequestLoggingFilter",
+        "Logback with JSON formatter",
+        "CorrelationID (X-Request-ID)",
+        "Unit and integration tests (8+ scenarios)"
+      ],
+      "coverage": "N/A",
+      "validation": "GlobalExceptionHandler OK, Flyway Testcontainers"
+    },
+    {
+      "date": "23/03",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Spring Cloud Gateway — Routes",
+      "bullets": [
+        "API Gateway with Spring Cloud Gateway",
+        "Routes: /api/v1/registration/**, /scheduling/**, /passport/**, /civil-registry/**",
+        "Request/response logging"
+      ],
+      "coverage": "N/A",
+      "validation": "Routing correct"
+    },
+    {
+      "date": "24/03",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Rate Limiting and CORS",
+      "bullets": [
+        "Rate limiting Redis (bucket4j): 100 req/min per IP",
+        "CORS policy configured",
+        "Request size limits (max 10MB)"
+      ],
+      "coverage": "N/A",
+      "validation": "429 after exceeding limit"
+    },
+    {
+      "date": "25/03",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Keycloak — Realm and Clients",
+      "bullets": [
+        "Keycloak in Docker Compose",
+        "Realm 'sgcd': token lifetime, password policy, brute force",
+        "Clients: sgcd-backend, sgcd-backoffice, sgcd-portal"
+      ],
+      "coverage": "N/A",
+      "validation": "Realm OK, clients functional"
+    },
+    {
+      "date": "26/03",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Keycloak — Roles and Users",
+      "bullets": [
+        "Roles: ADMIN, CONSUL, ATTENDANCE_OFFICER, FINANCIAL_OFFICER, CIVIL_OFFICER, CITIZEN",
+        "Test users per role",
+        "Export realm config JSON"
+      ],
+      "coverage": "N/A",
+      "validation": "Login OK, token contains roles"
+    },
+    {
+      "date": "27/03",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Circuit Breaker and Resilience",
+      "bullets": [
+        "Resilience4j: circuit breaker, retry, timeout",
+        "Fallback responses",
+        "Failure tests"
+      ],
+      "coverage": "N/A",
+      "validation": "Circuit breaker opens after failures"
+    },
+    {
+      "date": "05/04",
+      "day": "Sun",
+      "hours": 10,
+      "title": "OAuth2, JWT and Complete Authorization",
+      "bullets": [
+        "OAuth2 Resource Server with JWT via Keycloak",
+        "JwtAuthenticationConverter for roles/claims",
+        "SecurityConfig with @PreAuthorize per endpoint",
+        "Annotations: @AdminOnly, @ConsulOrAbove, @Authenticated",
+        "SecurityContextService",
+        "AuthInterceptor Angular (JWT), ErrorInterceptor (401 → login)",
+        "AuthGuard and RoleGuard Angular",
+        "Directives *hasRole and *hasAnyRole"
+      ],
+      "coverage": "N/A",
+      "validation": "Authorized/denied per role, login/logout E2E"
+    },
+    {
+      "date": "07/04",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Angular Backoffice Layout",
+      "bullets": [
+        "Shell: responsive sidebar, header user info, footer",
+        "Angular Material theme",
+        "Global loading spinner and toast notifications"
+      ],
+      "coverage": "N/A",
+      "validation": "Layout, sidebar toggle, responsive"
+    },
+    {
+      "date": "08/04",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Routing and Lazy Loading",
+      "bullets": [
+        "Lazy loading per functional module",
+        "Dynamic breadcrumbs",
+        "404 page and post-login redirect"
+      ],
+      "coverage": "N/A",
+      "validation": "Lazy loading chunks, breadcrumbs OK"
+    },
+    {
+      "date": "09/04",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Angular Base HTTP Services",
+      "bullets": [
+        "Generic typed ApiService: get, post, put, patch",
+        "Reusable pagination and filters",
+        "Local cache service"
+      ],
+      "coverage": "N/A",
+      "validation": "ApiService with HttpClientTestingModule"
+    },
+    {
+      "date": "10/04",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Prometheus and Grafana",
+      "bullets": [
+        "Docker Compose with Prometheus + Grafana",
+        "Scraping Actuator and Kafka metrics",
+        "Dashboards: JVM, HTTP, MySQL"
+      ],
+      "coverage": "N/A",
+      "validation": "Targets up, dashboards with data"
+    },
+    {
+      "date": "13/04",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Alerts and Custom Metrics",
+      "bullets": [
+        "Micrometer: requests, latency",
+        "Grafana alerts: CPU > 80%, mem > 85%, 5xx > 1%",
+        "Overview dashboard"
+      ],
+      "coverage": "N/A",
+      "validation": "Metrics visible, alerts trigger"
+    },
+    {
+      "date": "19/04",
+      "day": "Sun",
+      "hours": 10,
+      "title": "E2E Integration and Sprint 1 Review",
+      "bullets": [
+        "Cypress with fixtures and commands",
+        "E2E: login → dashboard → role",
+        "Complete cd-staging.yml",
+        "Staging environment",
+        "Database seeding staging",
+        "Deploy staging and validate services",
+        "Smoke tests staging",
+        "Code review and final merge"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging operational, smoke tests OK"
+    },
+    {
+      "date": "20/04",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Base document upload service",
+      "bullets": [
+        "DocumentStorageService with MinIO: upload, download, delete",
+        "File type validation by magic bytes",
+        "Size validation (max 5MB) and formats (PDF, JPG, PNG)"
+      ],
+      "coverage": "N/A",
+      "validation": "Upload/download MinIO functional"
+    },
+    {
+      "date": "21/04",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Base notification service",
+      "bullets": [
+        "NotificacaoService with Spring Mail + Thymeleaf",
+        "Base templates: confirmation, error, info",
+        "Asynchronous sending via Kafka"
+      ],
+      "coverage": "N/A",
+      "validation": "GreenMail: email with template"
+    },
+    {
+      "date": "22/04",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Kafka — Configuration and Topics",
+      "bullets": [
+        "Kafka topics: registration, scheduling, passport, civil-registry, payment, workflow, audit",
+        "JSON serialization with schema",
+        "Dead letter queue for failures"
+      ],
+      "coverage": "N/A",
+      "validation": "Topics created, produce/consume OK"
+    },
+    {
+      "date": "23/04",
+      "day": "Thu",
+      "hours": 2,
+      "title": "AuditService — Audit Trail",
+      "bullets": [
+        "AuditConsumer: Kafka events → audit table",
+        "GET /audit?entity=...&action;=...&from;=...&to;=...",
+        "Retention: >1 year → archive, >3 years → delete"
+      ],
+      "coverage": "N/A",
+      "validation": "Consumer OK, filters functional"
+    },
+    {
+      "date": "24/04",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Integration Tests Configuration",
+      "bullets": [
+        "Testcontainers for MySQL, Kafka, MinIO, Keycloak",
+        "TestDataFactory for test data",
+        "Test profiles: @ActiveProfiles(\"test\")"
+      ],
+      "coverage": "N/A",
+      "validation": "Testcontainers start in < 30s"
+    },
+    {
+      "date": "26/04",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Base Workflow Module (State Machine)",
+      "bullets": [
+        "ConsularProcess base entity",
+        "WorkflowStateMachine: generic transitions for all modules",
+        "ProcessState enum: DRAFT, SUBMITTED, UNDER_REVIEW, VALIDATED, PENDING_CITIZEN,",
+        "ProcessService: create, transition, comment",
+        "ApprovalService: multi-level routing (SIMPLE, INTERMEDIATE, COMPLEX)",
+        "Kafka Event ProcessStateChanged",
+        "GET /processes/{id}/history",
+        "Tests: valid and invalid transitions (20+ scenarios)"
+      ],
+      "coverage": "N/A",
+      "validation": "Generic state machine, 20+ scenarios"
+    },
+    {
+      "date": "27/04",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Frontend — Process Inbox (generic)",
+      "bullets": [
+        "Inbox: pending by urgency and age",
+        "Badges: urgent (red), >48h (yellow), normal",
+        "Filters: type, state, post, module"
+      ],
+      "coverage": "N/A",
+      "validation": "Inbox renders, filters, badges"
+    },
+    {
+      "date": "28/04",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Frontend — Process Timeline",
+      "bullets": [
+        "Visual timeline of process states",
+        "Stepper: past (green), current (blue), future (gray)",
+        "Documents section with upload"
+      ],
+      "coverage": "N/A",
+      "validation": "Timeline, stepper per state"
+    },
+    {
+      "date": "29/04",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Frontend — Approval/Return Modal",
+      "bullets": [
+        "Modal: approve, return (mandatory reason), reject",
+        "Confirmation before irreversible actions",
+        "Toast notifications feedback"
+      ],
+      "coverage": "N/A",
+      "validation": "Modal, reason validation, actions"
+    },
+    {
+      "date": "30/04",
+      "day": "Thu",
+      "hours": 2,
+      "title": "User Management",
+      "bullets": [
+        "UserService: CRUD + Keycloak sync",
+        "Role management: assign/remove",
+        "Access profile per consular post"
+      ],
+      "coverage": "N/A",
+      "validation": "CRUD → Keycloak sync, role, post"
+    },
+    {
+      "date": "04/05",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Session Log and Security",
+      "bullets": [
+        "Session logs: login, logout, refresh, IP, user-agent",
+        "Active sessions for admin",
+        "Lock after 5 failed attempts"
+      ],
+      "coverage": "N/A",
+      "validation": "Login recorded, lock works"
+    },
+    {
+      "date": "10/05",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Final Integration and Sprint 1 Buffer",
+      "bullets": [
+        "Delegation: absent officer → substitute",
+        "Escalation > 48h → upper level",
+        "@Scheduled SLA alerts: >24h, >48h, >72h",
+        "Complete regression suite all base modules",
+        "Deploy staging with full infra",
+        "Smoke tests all endpoints",
+        "Documentation: ADRs, setup guide, architecture overview",
+        "Prepare seed data for Sprint 2"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging stable, base workflow functional"
+    }
+  ],
+  "2": [
+    {
+      "date": "11/05",
+      "day": "Mon",
+      "hours": 2,
+      "title": "JPA Entities — Citizen",
+      "bullets": [
+        "Citizen: id, name, dateOfBirth, parentage, maritalStatus, profession, qualifications",
+        "ForeignAddress: street, city, postalCode, country",
+        "Enums: MaritalStatus, Jurisdiction, DocumentType"
+      ],
+      "coverage": "N/A",
+      "validation": "JPA persistence with Testcontainers"
+    },
+    {
+      "date": "12/05",
+      "day": "Tue",
+      "hours": 2,
+      "title": "JPA Entities — Registration and Documents",
+      "bullets": [
+        "ConsularRegistration: registrationNumber, status, jurisdiction, consularPost",
+        "DigitalDocument: type, originalName, path, hash, size, validated",
+        "Flyway: V2, V3 create tables with indexes"
+      ],
+      "coverage": "N/A",
+      "validation": "Migrations OK, foreign keys, indexes"
+    },
+    {
+      "date": "13/05",
+      "day": "Wed",
+      "hours": 2,
+      "title": "DTOs and MapStruct Mappers",
+      "bullets": [
+        "CitizenCreateRequest, CitizenUpdateRequest, CitizenResponse",
+        "MapStruct bidirectional mappers",
+        "Validators: @ValidBI, @ValidPassport, @ValidNIF"
+      ],
+      "coverage": "N/A",
+      "validation": "Tests each mapper and validator (10+)"
+    },
+    {
+      "date": "15/05",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Repository and Specification Pattern",
+      "bullets": [
+        "CitizenRepository: findByIdNumber, findByPassportNumber",
+        "ConsularRegistrationRepository: by jurisdiction, status, date",
+        "Specification pattern for dynamic multi-criteria search"
+      ],
+      "coverage": "N/A",
+      "validation": "Integration tests Testcontainers"
+    },
+    {
+      "date": "18/05",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Service Layer — Business Validations",
+      "bullets": [
+        "CitizenService: ID/passport uniqueness, mandatory fields",
+        "Registration number generation: YEAR/JURISDICTION/SEQ",
+        "Age validation, eligibility, prior registration check"
+      ],
+      "coverage": "N/A",
+      "validation": "Mockito: duplicate, invalid, generation (8+)"
+    },
+    {
+      "date": "24/05",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Complete REST API and Upload",
+      "bullets": [
+        "POST /api/v1/registrations (create registration)",
+        "GET (by ID), GET (paginated listing), PATCH, DELETE (soft delete)",
+        "POST /registrations/{id}/documents (multipart, 5MB, PDF/JPG/PNG)",
+        "Photo validation: ICAO dimensions, format",
+        "ClamAV virus scan on uploads",
+        "Workflow integration: registration → automatic process",
+        "CRUD + upload tests (20+ scenarios)",
+        "Error tests: large file, invalid type, duplicate"
+      ],
+      "coverage": "N/A",
+      "validation": "Testcontainers suite MySQL + MinIO"
+    },
+    {
+      "date": "26/05",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Automatic Jurisdiction Mapping",
+      "bullets": [
+        "JurisdictionService: postal code → consular post",
+        "Table: DE codes → Berlin/Bremen/Düsseldorf/Munich; CZ → Prague",
+        "Manual fallback when code not recognized"
+      ],
+      "coverage": "N/A",
+      "validation": "20+ postal codes, fallback"
+    },
+    {
+      "date": "27/05",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Consular Card — PDF Generation",
+      "bullets": [
+        "ConsularCardService: A6 PDF with data, photo, coat of arms",
+        "iText/OpenPDF template: name, ID, passport, jurisdiction, validity",
+        "GET /registrations/{id}/card"
+      ],
+      "coverage": "N/A",
+      "validation": "Correct PDF, A6, photo"
+    },
+    {
+      "date": "28/05",
+      "day": "Thu",
+      "hours": 2,
+      "title": "QR Code Verification",
+      "bullets": [
+        "QRCodeService: QR with HMAC signature",
+        "QR on consular card PDF",
+        "GET /verify/{code} (public endpoint)"
+      ],
+      "coverage": "N/A",
+      "validation": "QR encode/decode, valid/invalid HMAC"
+    },
+    {
+      "date": "29/05",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Full-Text Search",
+      "bullets": [
+        "MySQL FULLTEXT on name and birthPlace",
+        "Combined filters: name, jurisdiction, status, date",
+        "GET /registrations?search=...&page;=..."
+      ],
+      "coverage": "N/A",
+      "validation": "Partial search, combined, pagination"
+    },
+    {
+      "date": "01/06",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Excel/CSV Export",
+      "bullets": [
+        "Apache POI (Excel) and CSV",
+        "GET /registrations/export?format=xlsx|csv with filters",
+        "Correct download headers and content-type"
+      ],
+      "coverage": "N/A",
+      "validation": "Valid Excel, CSV, filters"
+    },
+    {
+      "date": "07/06",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Frontend — Complete Consular Registration",
+      "bullets": [
+        "Multi-step form: Personal Data → Address → Upload → Confirmation",
+        "Drag-and-drop upload (ID, passport, photo, proof of address)",
+        "Reactive validation per step",
+        "Citizen listing: Material table with filters, search, pagination",
+        "Citizen details: tabs Data, Documents, Card, Process, History",
+        "Inline document preview",
+        "Consular card download",
+        "Component tests (15+)"
+      ],
+      "coverage": "N/A",
+      "validation": "Form, upload, table, details"
+    },
+    {
+      "date": "08/06",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Partial Update (PATCH)",
+      "bullets": [
+        "PATCH /registrations/{id} with merge patch",
+        "Protected fields (ID, birth) → approval required",
+        "Optimistic versioning @Version"
+      ],
+      "coverage": "N/A",
+      "validation": "Patch, protected rejected, conflict"
+    },
+    {
+      "date": "09/06",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Change History",
+      "bullets": [
+        "ChangeHistory: field, previousValue, newValue, date, user",
+        "Hibernate Envers/JPA listener",
+        "GET /registrations/{id}/history"
+      ],
+      "coverage": "N/A",
+      "validation": "Change → history recorded"
+    },
+    {
+      "date": "10/06",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Expiration Notification",
+      "bullets": [
+        "@Scheduled: registrations expiring (90, 30, 7 days)",
+        "Renewal email template",
+        "Renewal with pre-filled data"
+      ],
+      "coverage": "N/A",
+      "validation": "Scheduler notifies, template OK"
+    },
+    {
+      "date": "11/06",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Kafka Producer — Events",
+      "bullets": [
+        "Events: RegistrationCreated, Updated, Expiring, DocumentUploaded",
+        "JSON serialization with schema",
+        "Publication after each CRUD"
+      ],
+      "coverage": "N/A",
+      "validation": "EmbeddedKafka: event published"
+    },
+    {
+      "date": "12/06",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Consular Registration Renewal",
+      "bullets": [
+        "Renewal workflow: pre-fill existing data",
+        "Update expired documents",
+        "New consular card after renewal"
+      ],
+      "coverage": "N/A",
+      "validation": "Renewal preserves history"
+    },
+    {
+      "date": "14/06",
+      "day": "Sun",
+      "hours": 10,
+      "title": "E2E Tests and Sprint 2 Review",
+      "bullets": [
+        "E2E Cypress: register → upload → search → details",
+        "E2E: generate card → verify QR",
+        "E2E: update → history",
+        "Integration: registration-svc → Kafka → audit",
+        "Security tests: CITIZEN ≠ ADMIN",
+        "Fix E2E and integration bugs",
+        "Deploy staging with 50+ test citizens",
+        "Sprint 2 Demo"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E suite 10+ scenarios, staging OK"
+    },
+    {
+      "date": "15/06",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Edge Cases and Validations",
+      "bullets": [
+        "Names with ç, ã, ü; boundary dates",
+        "Rate limiting uploads (10/hour)",
+        "Total document limit (50MB)"
+      ],
+      "coverage": "N/A",
+      "validation": "Edge cases, rate limiting"
+    },
+    {
+      "date": "16/06",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Performance and Queries",
+      "bullets": [
+        "EXPLAIN all queries + indexes",
+        "Redis cache for frequent queries",
+        "Optimize N+1: @EntityGraph, JOIN FETCH"
+      ],
+      "coverage": "N/A",
+      "validation": "Queries < 200ms, indexes used"
+    },
+    {
+      "date": "17/06",
+      "day": "Wed",
+      "hours": 2,
+      "title": "API Documentation OpenAPI",
+      "bullets": [
+        "Swagger/OpenAPI annotations all registration endpoints",
+        "Request/response examples",
+        "Grouped Swagger UI"
+      ],
+      "coverage": "N/A",
+      "validation": "Valid schema, examples OK"
+    },
+    {
+      "date": "18/06",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Frontend UX Improvements",
+      "bullets": [
+        "Skeleton loaders",
+        "Upload progress bar, preview thumbnail",
+        "PT error messages"
+      ],
+      "coverage": "N/A",
+      "validation": "Loading states, upload feedback"
+    },
+    {
+      "date": "19/06",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Code Quality and Refactoring",
+      "bullets": [
+        "SonarQube: 0 bugs, 0 vulnerabilities",
+        "Refactoring duplicated code",
+        "README registration module"
+      ],
+      "coverage": "N/A",
+      "validation": "Quality gate passes"
+    },
+    {
+      "date": "21/06",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Staging Deploy and Sprint 2 Validation",
+      "bullets": [
+        "Deploy staging with 50+ test citizens",
+        "Edge cases: ç, ã, ü; simultaneous uploads",
+        "Performance: EXPLAIN queries + indexes",
+        "Redis cache for frequent queries",
+        "Optimize N+1: @EntityGraph, JOIN FETCH",
+        "Swagger/OpenAPI registration endpoints",
+        "Complete smoke tests",
+        "Prepare citizen portal for Sprint 2 Week 5"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging validated, queries < 200ms"
+    },
+    {
+      "date": "22/06",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Citizen Portal — Online Registration",
+      "bullets": [
+        "Multi-step public registration form on portal",
+        "Document upload with preview",
+        "Confirmation and protocol number"
+      ],
+      "coverage": "N/A",
+      "validation": "Registration via portal functional"
+    },
+    {
+      "date": "23/06",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Citizen Portal — Personal Registration Area",
+      "bullets": [
+        "'My Registration': data, status, documents",
+        "Data update via portal",
+        "Consular card download"
+      ],
+      "coverage": "N/A",
+      "validation": "Personal area functional"
+    },
+    {
+      "date": "24/06",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Workflow Integration — Registration",
+      "bullets": [
+        "Registration → automatic process (SIMPLE workflow)",
+        "Process approved → registration active → card issued",
+        "End-to-end flow: submit → approve → card"
+      ],
+      "coverage": "N/A",
+      "validation": "Complete flow functional"
+    },
+    {
+      "date": "25/06",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Consular Registration Reports",
+      "bullets": [
+        "Monthly report: registrations by jurisdiction, status",
+        "Trend chart",
+        "Export PDF and Excel"
+      ],
+      "coverage": "N/A",
+      "validation": "Report, export OK"
+    },
+    {
+      "date": "26/06",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Registration Dashboard",
+      "bullets": [
+        "KPIs: total registered, new/month, expiring",
+        "Distribution by jurisdiction and post",
+        "Latest registrations"
+      ],
+      "coverage": "N/A",
+      "validation": "Dashboard functional"
+    },
+    {
+      "date": "28/06",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Buffer / Sprint 3 Preparation",
+      "bullets": [
+        "Complete delayed tasks",
+        "Complete regression suite",
+        "Prepare scheduling seed data",
+        "Documentation and ADRs",
+        "Sprint 2 Retrospective",
+        "Deploy staging with citizen portal",
+        "Verify i18n on portal (4 languages)",
+        "Smoke tests all registration flows"
+      ],
+      "coverage": "N/A",
+      "validation": "100% green regression, staging OK"
+    }
+  ],
+  "3": [
+    {
+      "date": "29/06",
+      "day": "Mon",
+      "hours": 2,
+      "title": "JPA Entities — Scheduling",
+      "bullets": [
+        "Appointment, TimeSlot, PostConfiguration, ServiceType",
+        "Enums: AppointmentStatus, AttendanceType, Priority",
+        "Flyway: V4__create_scheduling_tables.sql"
+      ],
+      "coverage": "N/A",
+      "validation": "Migrations OK, constraints"
+    },
+    {
+      "date": "30/06",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Seed Data — Posts and Configuration",
+      "bullets": [
+        "4 posts: Berlin, Bremen, Düsseldorf, Munich + Prague",
+        "Service types with duration (30/45/60min)",
+        "DE and CZ holidays for exclusion"
+      ],
+      "coverage": "N/A",
+      "validation": "Seed OK, slots excluded on holidays"
+    },
+    {
+      "date": "01/07",
+      "day": "Wed",
+      "hours": 2,
+      "title": "SlotService — Slot Calculation",
+      "bullets": [
+        "Slots per post, day, service type",
+        "Exclusion: holidays, occupied, lunch",
+        "Pessimistic locking for conflicts"
+      ],
+      "coverage": "N/A",
+      "validation": "Correct generation, no conflicts"
+    },
+    {
+      "date": "02/07",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Scheduling API — CRUD",
+      "bullets": [
+        "POST create, GET by ID, GET list, DELETE cancel",
+        "GET /scheduling/slots?postId=...&date;=...&serviceType;=...",
+        "Advance: min 24h, max 90 days"
+      ],
+      "coverage": "N/A",
+      "validation": "CRUD + slot occupied + cancel"
+    },
+    {
+      "date": "03/07",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Cancellation and Rescheduling",
+      "bullets": [
+        "Cancellation min 4h before",
+        "Rescheduling: release + reserve + history",
+        "3 no-shows → 30-day block"
+      ],
+      "coverage": "N/A",
+      "validation": "Deadline/past deadline, no-show block"
+    },
+    {
+      "date": "05/07",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Queues, Priorities and WebSocket",
+      "bullets": [
+        "QueueService: URGENT > ELDERLY/PREGNANT > MINOR > NORMAL",
+        "Digital check-in with QR code",
+        "WebSocket STOMP over SockJS",
+        "Broadcast: new, called, started, completed",
+        "Dynamic wait time estimate",
+        "POST /queue/next (call next)",
+        "Attendance record: start, end, result",
+        "Queue tests (15+ scenarios)"
+      ],
+      "coverage": "N/A",
+      "validation": "Queue 15+ scenarios, WebSocket OK"
+    },
+    {
+      "date": "06/07",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Email Notifications",
+      "bullets": [
+        "Templates: confirmation, 24h reminder, cancellation",
+        "Asynchronous sending via Kafka",
+        "Retry with backoff"
+      ],
+      "coverage": "N/A",
+      "validation": "Email with correct template"
+    },
+    {
+      "date": "07/07",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Reminder Scheduler",
+      "bullets": [
+        "@Scheduled: tomorrow's appointments → reminder",
+        "Log: sent, failed, bounced",
+        "Retry failed"
+      ],
+      "coverage": "N/A",
+      "validation": "Automatic reminder, retry"
+    },
+    {
+      "date": "08/07",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Frontend — Backoffice Calendar",
+      "bullets": [
+        "FullCalendar Angular: weekly view per post",
+        "Post selector",
+        "Click slot → detail modal"
+      ],
+      "coverage": "N/A",
+      "validation": "Calendar, filter, modal"
+    },
+    {
+      "date": "09/07",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Frontend — Calendar Interactions",
+      "bullets": [
+        "Modal: confirm, cancel, reschedule, view citizen",
+        "Drag-and-drop rescheduling",
+        "Color legend per state"
+      ],
+      "coverage": "N/A",
+      "validation": "Actions, drag-and-drop"
+    },
+    {
+      "date": "10/07",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Frontend — Queue Dashboard",
+      "bullets": [
+        "WebSocket queue by priority",
+        "'Call Next' button",
+        "Wait time, priority badge, status"
+      ],
+      "coverage": "N/A",
+      "validation": "Queue updates, call works"
+    },
+    {
+      "date": "12/07",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Citizen Portal — Scheduling",
+      "bullets": [
+        "Wizard: Service → Post → Date/Time → Confirmation",
+        "'My Appointments': listing, cancel/reschedule",
+        "i18n (PT, DE, EN, CS)",
+        "QR check-in on detail",
+        "E2E: schedule → confirm → cancel → reschedule",
+        "Mobile/tablet PWA responsiveness"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E portal 4 languages, mobile"
+    },
+    {
+      "date": "13/07",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Daily Dashboard — Statistics",
+      "bullets": [
+        "GET /dashboard/daily: total, attended, no-shows",
+        "Average wait/attendance time",
+        "Day/week comparison"
+      ],
+      "coverage": "N/A",
+      "validation": "Correct calculations"
+    },
+    {
+      "date": "14/07",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Dashboard — Frontend",
+      "bullets": [
+        "KPI cards: attended, waiting, average time, no-shows",
+        "Appointments/hour chart",
+        "Upcoming appointments with countdown"
+      ],
+      "coverage": "N/A",
+      "validation": "KPIs OK, chart present"
+    },
+    {
+      "date": "15/07",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Attendance Record",
+      "bullets": [
+        "POST /attendances: start, end, observations, result",
+        "Auto-start when officer calls next",
+        "Categorization: completed, requires docs, forwarded"
+      ],
+      "coverage": "N/A",
+      "validation": "Record, auto-start, categorization"
+    },
+    {
+      "date": "16/07",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Attendance Reports",
+      "bullets": [
+        "Weekly report: by type, post, officer",
+        "Export PDF and Excel",
+        "Redis cache (TTL: 1h)"
+      ],
+      "coverage": "N/A",
+      "validation": "Report OK, export, cache"
+    },
+    {
+      "date": "17/07",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Frontend — Reports",
+      "bullets": [
+        "Filters: period, post, type",
+        "Trend charts",
+        "Export PDF/Excel"
+      ],
+      "coverage": "N/A",
+      "validation": "Filters, export works"
+    },
+    {
+      "date": "19/07",
+      "day": "Sun",
+      "hours": 10,
+      "title": "E2E Tests and Sprint 3 Review",
+      "bullets": [
+        "E2E: schedule → check-in → queue → called → attendance",
+        "k6: 50 simultaneous appointments",
+        "Integration: scheduling → Kafka → email",
+        "Concurrency: two citizens same slot",
+        "Fix bugs, deploy staging",
+        "Sprint 3 Demo, retrospective"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E 10+, k6 p95 < 500ms, staging OK"
+    },
+    {
+      "date": "20/07",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Advanced Post Configuration",
+      "bullets": [
+        "Admin interface for schedules per post",
+        "Holiday management per country"
+      ],
+      "coverage": "N/A",
+      "validation": "Schedule → slots updated"
+    },
+    {
+      "date": "21/07",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Push Notifications (PWA)",
+      "bullets": [
+        "Web Push Portal",
+        "Opt-in/opt-out by citizen"
+      ],
+      "coverage": "N/A",
+      "validation": "Push on state change"
+    },
+    {
+      "date": "22/07",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Scheduling Performance",
+      "bullets": [
+        "Composite indexes date + post + status",
+        "Cache slots with Kafka invalidation"
+      ],
+      "coverage": "N/A",
+      "validation": "Slots < 50ms, cache > 80%"
+    },
+    {
+      "date": "23/07",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Regression Tests",
+      "bullets": [
+        "Complete suite registration + scheduling",
+        "Resolve flaky tests"
+      ],
+      "coverage": "N/A",
+      "validation": "100% green, zero flaky"
+    },
+    {
+      "date": "24/07",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Documentation and ADRs",
+      "bullets": [
+        "Scheduling API OpenAPI",
+        "ADR-003 (WebSocket), ADR-004 (prioritization)"
+      ],
+      "coverage": "N/A",
+      "validation": "Valid OpenAPI, ADRs"
+    },
+    {
+      "date": "26/07",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Staging Deploy and Sprint 3 Validation",
+      "bullets": [
+        "Deploy staging with complete scheduling",
+        "E2E: schedule → check-in → queue → attendance → report",
+        "k6: 50 simultaneous appointments",
+        "Concurrency: two citizens same slot",
+        "Performance tuning scheduling queries",
+        "Smoke tests registration + scheduling integrated",
+        "Fix found bugs",
+        "Sprint 3 mid-point demo"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E 10+, k6 p95 < 500ms"
+    },
+    {
+      "date": "27/07",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Registration → Scheduling Integration",
+      "bullets": [
+        "Verify active consular registration before scheduling",
+        "Prerequisites per service type",
+        "Citizen data pre-filled from registration"
+      ],
+      "coverage": "N/A",
+      "validation": "Without registration → blocked"
+    },
+    {
+      "date": "28/07",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Capacity Management per Post",
+      "bullets": [
+        "Max appointments/day per post configuration",
+        "Capacity > 80% alerts",
+        "Weekly occupancy dashboard"
+      ],
+      "coverage": "N/A",
+      "validation": "Limits respected, alert OK"
+    },
+    {
+      "date": "29/07",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Agenda Export",
+      "bullets": [
+        "Weekly agenda PDF export per post",
+        "Daily list export for reception",
+        "iCalendar (.ics) for officers"
+      ],
+      "coverage": "N/A",
+      "validation": "Export PDF, iCal functional"
+    },
+    {
+      "date": "30/07",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Portal Improvements — Scheduling",
+      "bullets": [
+        "Service type search with auto-complete",
+        "Confirmation with consular post map",
+        "Simplified cancellation and rescheduling"
+      ],
+      "coverage": "N/A",
+      "validation": "Improved UX, map OK"
+    },
+    {
+      "date": "31/07",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Cross-Module Regression Tests",
+      "bullets": [
+        "Suite: registration + scheduling integrated",
+        "Verify Sprint 3 didn't break registration",
+        "Resolve flaky tests"
+      ],
+      "coverage": "N/A",
+      "validation": "100% green, zero flaky"
+    },
+    {
+      "date": "02/08",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Buffer / Sprint 4 Preparation",
+      "bullets": [
+        "Delayed tasks",
+        "Research passport workflows: states, documents, SMEP",
+        "Passport seed data",
+        "Regression and staging deploy",
+        "Scheduling API OpenAPI documentation",
+        "Prepare passport data model",
+        "Verify staging with 2 integrated modules",
+        "Sprint 3 Retrospective"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging stable, 2 modules"
+    }
+  ],
+  "4": [
+    {
+      "date": "03/08",
+      "day": "Mon",
+      "hours": 2,
+      "title": "JPA Entities — Passport",
+      "bullets": [
+        "PassportRequest: type (issuance/renewal/extension/replacement), modality, urgency",
+        "BiometricData: photo, fingerprints (placeholder), signature",
+        "Flyway: V5__create_passport_tables.sql"
+      ],
+      "coverage": "N/A",
+      "validation": "Migrations OK, constraints"
+    },
+    {
+      "date": "04/08",
+      "day": "Tue",
+      "hours": 2,
+      "title": "JPA Entities — Emergency Document and Tracking",
+      "bullets": [
+        "EmergencyDocument: reason, itinerary, validityHours",
+        "PassportTracking: state, transitionDate, observation",
+        "Enums: RequestType, ProductionState, ReplacementReason"
+      ],
+      "coverage": "N/A",
+      "validation": "Enums mapped, FK correct"
+    },
+    {
+      "date": "05/08",
+      "day": "Wed",
+      "hours": 2,
+      "title": "DTOs and Specific Validations",
+      "bullets": [
+        "PassportRequestDTO: validations per type",
+        "EmergencyDocumentRequest: urgency fields",
+        "RequiredDocumentValidator: document list per request type"
+      ],
+      "coverage": "N/A",
+      "validation": "Validators per type (10+)"
+    },
+    {
+      "date": "06/08",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Service — Passport Business Rules",
+      "bullets": [
+        "PassportRequestService: active consular registration check",
+        "Previous passport verification (renewal/extension)",
+        "Parental authorization validation (minors)"
+      ],
+      "coverage": "N/A",
+      "validation": "Registration mandatory, parental check"
+    },
+    {
+      "date": "07/08",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Passport Workflow — Configuration",
+      "bullets": [
+        "INTERMEDIATE workflow: Officer → Consul",
+        "States: SUBMITTED → UNDER_REVIEW → VALIDATED → PENDING_PAYMENT → APPROVED →",
+        "SLA per state: review 48h, production 15 days"
+      ],
+      "coverage": "N/A",
+      "validation": "Transitions configured"
+    },
+    {
+      "date": "09/08",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Complete Passport REST API",
+      "bullets": [
+        "POST /api/v1/passports (create request)",
+        "GET by ID, GET listing with filters",
+        "POST /passports/{id}/documents (upload required docs)",
+        "POST /passports/{id}/transition (state transition)",
+        "GET /passports/{id}/tracking (production timeline)",
+        "Required docs check before submit",
+        "Workflow integration: request → automatic process",
+        "CRUD + workflow tests (20+ scenarios)"
+      ],
+      "coverage": "N/A",
+      "validation": "API complete, workflow integrated"
+    },
+    {
+      "date": "10/08",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Emergency Travel Document — API and Service",
+      "bullets": [
+        "POST /passports/emergency (emergency document)",
+        "Simplified urgency form",
+        "Limited validity, single use"
+      ],
+      "coverage": "N/A",
+      "validation": "Create, validity, itinerary"
+    },
+    {
+      "date": "11/08",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Required Documents per Type",
+      "bullets": [
+        "Document list: issuance (birth certificate, ID, photo, proof of address)",
+        "Renewal: previous passport mandatory",
+        "Replacement (theft): police report mandatory"
+      ],
+      "coverage": "N/A",
+      "validation": "Validation per type, missing docs rejected"
+    },
+    {
+      "date": "12/08",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Minor Management",
+      "bullets": [
+        "Parental authorization verification",
+        "Mandatory presence of both parents",
+        "Notarized authorization for absent parent"
+      ],
+      "coverage": "N/A",
+      "validation": "Minor without authorization → blocked"
+    },
+    {
+      "date": "13/08",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Production Tracking",
+      "bullets": [
+        "Visual timeline: request → review → production → available",
+        "Automatic notification on state change",
+        "Estimated deadline per type"
+      ],
+      "coverage": "N/A",
+      "validation": "Timeline updates, notification OK"
+    },
+    {
+      "date": "14/08",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Scheduling → Passport Integration",
+      "bullets": [
+        "'Passport' appointment type → request pre-creation",
+        "Active registration check before scheduling",
+        "Document prerequisites informed"
+      ],
+      "coverage": "N/A",
+      "validation": "Schedule → request, without registration → blocked"
+    },
+    {
+      "date": "16/08",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Frontend — Complete Passport Request",
+      "bullets": [
+        "Multi-step form: Type → Data → Documents → Minors → Confirmation",
+        "Document upload with checklist per type",
+        "Parental validation for minors",
+        "Request listing with filters and states",
+        "Details: tracking timeline, documents, process",
+        "Actions: approve, return, reject (backoffice)",
+        "Citizen portal: 'My Passports' with tracking",
+        "Component tests (15+)"
+      ],
+      "coverage": "N/A",
+      "validation": "Form, upload, tracking, portal"
+    },
+    {
+      "date": "17/08",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Passport Extension",
+      "bullets": [
+        "Rules: only valid or recently expired passports",
+        "Automatic eligibility check",
+        "Database annotation"
+      ],
+      "coverage": "N/A",
+      "validation": "Eligible/not eligible, annotation"
+    },
+    {
+      "date": "18/08",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Numbering and Registry",
+      "bullets": [
+        "Request number generation: YEAR/TYPE/POST/SEQ",
+        "Digital registry book: complete history",
+        "Search by previous passport number"
+      ],
+      "coverage": "N/A",
+      "validation": "Sequential numbering, search OK"
+    },
+    {
+      "date": "19/08",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Passport-Specific Notifications",
+      "bullets": [
+        "Templates: request received, approved, in production, available",
+        "Pickup reminder (7 days after available)",
+        "Passport expiration alert (180, 90, 30 days)"
+      ],
+      "coverage": "N/A",
+      "validation": "Notifications per state"
+    },
+    {
+      "date": "20/08",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Passport Reports",
+      "bullets": [
+        "Monthly report: by type, post, state",
+        "Average processing time per type",
+        "Export PDF and Excel"
+      ],
+      "coverage": "N/A",
+      "validation": "Report OK, correct times"
+    },
+    {
+      "date": "21/08",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Frontend — Passport Reports",
+      "bullets": [
+        "Dashboard: requests by state, average time",
+        "Trend charts",
+        "Integrated export"
+      ],
+      "coverage": "N/A",
+      "validation": "Dashboard OK, export"
+    },
+    {
+      "date": "30/08",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Passport E2E Tests",
+      "bullets": [
+        "E2E: issuance request → upload → review → approve → tracking",
+        "E2E: minor request with parental authorization",
+        "E2E: emergency document urgency",
+        "E2E: renewal with previous passport",
+        "Integration: passport → Kafka → notification",
+        "Security tests: OFFICER vs CONSUL vs CITIZEN",
+        "Fix bugs and UX adjustments",
+        "Deploy staging with passport data"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E suite 10+ scenarios"
+    },
+    {
+      "date": "31/08",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Delivery Record",
+      "bullets": [
+        "POST /passports/{id}/deliver: date, digital signature",
+        "Previous passport return mandatory (renewal)",
+        "Delivery receipt PDF"
+      ],
+      "coverage": "N/A",
+      "validation": "Delivery recorded, receipt"
+    },
+    {
+      "date": "01/09",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Expired Passport Management",
+      "bullets": [
+        "@Scheduled: monthly expired check",
+        "Automatic renewal notification",
+        "Dashboard: passports expiring by period"
+      ],
+      "coverage": "N/A",
+      "validation": "Expired detected, notified"
+    },
+    {
+      "date": "02/09",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Restriction Verification",
+      "bullets": [
+        "Restriction list check (mock)",
+        "Impediments: warrants, state debts",
+        "Workflow blocked until resolution"
+      ],
+      "coverage": "N/A",
+      "validation": "Restriction → process blocked"
+    },
+    {
+      "date": "03/09",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Portal — Public Tracking",
+      "bullets": [
+        "Simplified timeline on portal",
+        "Push notifications on state change",
+        "Download delivery receipt"
+      ],
+      "coverage": "N/A",
+      "validation": "Portal tracking, push OK"
+    },
+    {
+      "date": "04/09",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Performance and Indexes",
+      "bullets": [
+        "EXPLAIN passport queries + indexes",
+        "Redis cache for frequent queries",
+        "N+1 optimization"
+      ],
+      "coverage": "N/A",
+      "validation": "Queries < 100ms"
+    },
+    {
+      "date": "06/09",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Cross-Module Integration and Sprint 4 Review",
+      "bullets": [
+        "E2E cross-module: registration → schedule passport → request → pay → approve → deliver",
+        "Rejection flow: submit → reject → citizen notification",
+        "Return flow: review → return → re-submit → approve",
+        "k6: 50 simultaneous requests",
+        "Complete staging deploy",
+        "Sprint 4 Demo",
+        "Retrospective and Sprint 5 planning",
+        "Passport API OpenAPI documentation"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E cross-module 10+, staging OK"
+    },
+    {
+      "date": "07/09",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Passport Edge Cases",
+      "bullets": [
+        "Duplicate request (valid passport exists)",
+        "Minor turning 18 during process",
+        "Emergency doc with valid passport → rejection"
+      ],
+      "coverage": "N/A",
+      "validation": "Edge cases 8+"
+    },
+    {
+      "date": "08/09",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Cross-Module Regression Tests",
+      "bullets": [
+        "Suite: registration + scheduling + passport",
+        "Verify Sprint 4 didn't break previous modules"
+      ],
+      "coverage": "N/A",
+      "validation": "100% green all modules"
+    },
+    {
+      "date": "09/09",
+      "day": "Wed",
+      "hours": 2,
+      "title": "SonarQube and Code Quality",
+      "bullets": [
+        "Resolve bugs and vulnerabilities",
+        "Refactoring duplicated code"
+      ],
+      "coverage": "N/A",
+      "validation": "Quality gate passes"
+    },
+    {
+      "date": "10/09",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Passport Documentation",
+      "bullets": [
+        "Complete API OpenAPI",
+        "ADR-005 (passport workflow), ADR-006 (minors)"
+      ],
+      "coverage": "N/A",
+      "validation": "Valid OpenAPI, ADRs"
+    },
+    {
+      "date": "11/09",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Complete Registration → Passport Integration",
+      "bullets": [
+        "Consular registration → enables passport request",
+        "Citizen data pre-filled in form",
+        "Consular card as verified prerequisite"
+      ],
+      "coverage": "N/A",
+      "validation": "Integrated flow functional"
+    },
+    {
+      "date": "13/09",
+      "day": "Sun",
+      "hours": 10,
+      "title": "E2E Cross-Module Tests Sprint 4",
+      "bullets": [
+        "E2E: registration → schedule passport → request → approve",
+        "E2E: minor with parental authorization",
+        "Concurrency: two officers same request",
+        "Performance: 100 active requests",
+        "Fix bugs, deploy staging",
+        "Sprint 4 Demo (passports)",
+        "Sprint 4 mid-point retrospective"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E cross-module 8+"
+    },
+    {
+      "date": "14/09",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Migration Declarations",
+      "bullets": [
+        "Automatic generation of standard declarations (nationality, marital status)",
+        "Bilingual templates PT/DE and PT/CS",
+        "Pre-filled data from consular registration"
+      ],
+      "coverage": "N/A",
+      "validation": "Declaration generated, bilingual"
+    },
+    {
+      "date": "15/09",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Fee Management per Passport Type",
+      "bullets": [
+        "Passport-specific fee schedule",
+        "Differentiated prices: issuance vs renewal vs urgent",
+        "Financial module integration (Sprint 5 preparation)"
+      ],
+      "coverage": "N/A",
+      "validation": "Correct prices per type"
+    },
+    {
+      "date": "16/09",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Passport Analytical Reports",
+      "bullets": [
+        "Average time per process phase",
+        "Rejection/return rate with reasons",
+        "Load forecast (seasonality)"
+      ],
+      "coverage": "N/A",
+      "validation": "Analytical reports OK"
+    },
+    {
+      "date": "17/09",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Portal Improvements — Passports",
+      "bullets": [
+        "Interactive FAQ: required documents per type",
+        "Deadline and cost estimate before submitting",
+        "Dynamic document checklist"
+      ],
+      "coverage": "N/A",
+      "validation": "FAQ, estimate, checklist"
+    },
+    {
+      "date": "18/09",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Civil Registry Preparation",
+      "bullets": [
+        "Research act types: birth, marriage, death, paternity acknowledgment",
+        "Map required documents per type",
+        "Prepare seed data"
+      ],
+      "coverage": "N/A",
+      "validation": "Research completed"
+    },
+    {
+      "date": "20/09",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Buffer / Sprint 4 Stabilization",
+      "bullets": [
+        "Sprint 4 delayed tasks",
+        "End-to-end regression: registration → scheduling → passport",
+        "Stable staging with 3 modules",
+        "Civil registry and payments seed data",
+        "Start civil registry data model",
+        "Passport API OpenAPI documentation",
+        "ADR-005 (passport workflow), ADR-006 (minors)",
+        "Sprint 4 Retrospective"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging stable, 3 modules integrated"
+    }
+  ],
+  "5": [
+    {
+      "date": "21/09",
+      "day": "Mon",
+      "hours": 2,
+      "title": "JPA Entities — Civil Registry",
+      "bullets": [
+        "CivilRegistryAct: type (BIRTH, MARRIAGE, DEATH, PATERNITY_ACKNOWLEDGMENT)",
+        "BirthRecord: fullName, date, place, hospital, sex, parents",
+        "Flyway: V6__create_civil_registry_tables.sql"
+      ],
+      "coverage": "N/A",
+      "validation": "Migrations OK, constraints"
+    },
+    {
+      "date": "22/09",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Entities — Marriage and Death",
+      "bullets": [
+        "MarriageRecord: spouses, regime, place, date, witnesses",
+        "DeathRecord: deceased, date, place, cause (optional), declarant",
+        "Enums: ActType, RegistrationModality (INSCRIPTION, TRANSCRIPTION)"
+      ],
+      "coverage": "N/A",
+      "validation": "Entities mapped, enums OK"
+    },
+    {
+      "date": "23/09",
+      "day": "Wed",
+      "hours": 2,
+      "title": "DTOs and Civil Registry Validations",
+      "bullets": [
+        "BirthRequest: newborn data + parents",
+        "MarriageRequest: spouses + documents + regime",
+        "DeathRequest: deceased + declarant + documents"
+      ],
+      "coverage": "N/A",
+      "validation": "Validators per type (12+)"
+    },
+    {
+      "date": "24/09",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Service — Civil Business Rules",
+      "bullets": [
+        "CivilRegistryService: parent registration verification",
+        "Birth rules: legal deadline, automatic nationality",
+        "Marriage rules: matrimonial capacity, impediments"
+      ],
+      "coverage": "N/A",
+      "validation": "Rules per act type"
+    },
+    {
+      "date": "25/09",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Civil Registry Workflow",
+      "bullets": [
+        "SIMPLE workflow for birth (Officer only)",
+        "INTERMEDIATE workflow for marriage (Officer → Consul)",
+        "Configurable required documents per type"
+      ],
+      "coverage": "N/A",
+      "validation": "Workflows configured per type"
+    },
+    {
+      "date": "04/10",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Complete Civil Registry REST API",
+      "bullets": [
+        "POST /api/v1/civil-registry/births",
+        "POST /civil-registry/marriages",
+        "POST /civil-registry/deaths",
+        "GET by ID, GET listing with filters per type",
+        "POST /{id}/documents (upload)",
+        "POST /{id}/transition (workflow)",
+        "Record number generation: YEAR/TYPE/BOOK/FOLIO/POST",
+        "CRUD + workflow tests (20+ scenarios)"
+      ],
+      "coverage": "N/A",
+      "validation": "Civil API complete, workflow integrated"
+    },
+    {
+      "date": "05/10",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Certificates — PDF Generation",
+      "bullets": [
+        "CertificateService: birth, marriage, death",
+        "A4 PDF template: coat of arms, data, numbering, signature",
+        "Verification QR on certificate"
+      ],
+      "coverage": "N/A",
+      "validation": "Correct PDF, QR functional"
+    },
+    {
+      "date": "06/10",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Certificates — Types and Formats",
+      "bullets": [
+        "Full narrative certificate vs extract",
+        "Bilingual certificate (PT/DE or PT/CS)",
+        "GET /civil-registry/{id}/certificate?type=〈="
+      ],
+      "coverage": "N/A",
+      "validation": "Types, formats, bilingual"
+    },
+    {
+      "date": "07/10",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Frontend — Civil Registry Forms",
+      "bullets": [
+        "Birth form: baby data, parents, hospital",
+        "Marriage form: spouses, regime, witnesses",
+        "Death form: deceased, cause, declarant"
+      ],
+      "coverage": "N/A",
+      "validation": "Forms with validation"
+    },
+    {
+      "date": "08/10",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Frontend — Listing and Details",
+      "bullets": [
+        "Civil acts listing with type/date/state filters",
+        "Details with timeline, documents, certificate",
+        "Download certificate PDF"
+      ],
+      "coverage": "N/A",
+      "validation": "Listing, details, download"
+    },
+    {
+      "date": "09/10",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Portal — Citizen Civil Registry",
+      "bullets": [
+        "'My Civil Records': listing",
+        "Online certificate request",
+        "Request tracking"
+      ],
+      "coverage": "N/A",
+      "validation": "Portal civil functional"
+    },
+    {
+      "date": "11/10",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Civil Registry E2E Tests",
+      "bullets": [
+        "E2E: birth registration → upload → approve → certificate",
+        "E2E: birth transcription",
+        "E2E: marriage → matrimonial capacity → approve",
+        "E2E: death → certificate",
+        "E2E: bilingual certificate request via portal",
+        "Security tests: CIVIL_OFFICER role",
+        "Fix bugs, UX adjustments",
+        "Deploy staging with civil data"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E civil 8+ scenarios"
+    },
+    {
+      "date": "12/10",
+      "day": "Mon",
+      "hours": 2,
+      "title": "JPA Entities — Financial Model",
+      "bullets": [
+        "Fee, Payment, Receipt, PaymentItem, ExchangeRate",
+        "Enums: PaymentMethod, PaymentStatus, Currency (EUR, AOA)",
+        "Flyway: V7__create_financial_tables.sql"
+      ],
+      "coverage": "N/A",
+      "validation": "Migrations OK, decimal(19,4)"
+    },
+    {
+      "date": "13/10",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Seed — Official Fee Schedule",
+      "bullets": [
+        "60+ services with EUR and AOA prices",
+        "Table versioning (validity, history)",
+        "Exemptions: minors, elderly, students"
+      ],
+      "coverage": "N/A",
+      "validation": "60+ fees, exemptions"
+    },
+    {
+      "date": "14/10",
+      "day": "Wed",
+      "hours": 2,
+      "title": "FeeService and Exchange Rate",
+      "bullets": [
+        "Price per service, exemptions/discounts",
+        "@Scheduled: ECB rate / manual fallback",
+        "Rate cache TTL 24h"
+      ],
+      "coverage": "N/A",
+      "validation": "Price, exemption, exchange OK"
+    },
+    {
+      "date": "15/10",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Payments API",
+      "bullets": [
+        "POST /payments (create)",
+        "PENDING → PROCESSING → CONFIRMED/FAILED",
+        "Idempotency with X-Idempotency-Key"
+      ],
+      "coverage": "N/A",
+      "validation": "Create, states, idempotency"
+    },
+    {
+      "date": "16/10",
+      "day": "Fri",
+      "hours": 2,
+      "title": "ReceiptService — PDF and Email",
+      "bullets": [
+        "PDF numbering YEAR/POST/SEQ, coat of arms, QR",
+        "Automatic email sending",
+        "GET /payments/{id}/receipt"
+      ],
+      "coverage": "N/A",
+      "validation": "Receipt PDF, email, download"
+    },
+    {
+      "date": "18/10",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Processing and Workflow Integration",
+      "bullets": [
+        "PaymentGateway interface + MockGateway",
+        "Mock: 80% approval, 15% decline, 5% timeout",
+        "Asynchronous Kafka confirmation",
+        "Workflow integration: PENDING_PAYMENT → pay → process advances",
+        "Timeout 48h → process suspended",
+        "Cancellation/refund with credit note",
+        "Payment → workflow tests (15+ scenarios)",
+        "Financial audit trail"
+      ],
+      "coverage": "N/A",
+      "validation": "Payment + workflow integrated"
+    },
+    {
+      "date": "19/10",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Frontend — Fee Management",
+      "bullets": [
+        "Fee CRUD: listing, editing",
+        "Price change preview",
+        "Last update indicator"
+      ],
+      "coverage": "N/A",
+      "validation": "CRUD, preview"
+    },
+    {
+      "date": "20/10",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Frontend — Payment Registration",
+      "bullets": [
+        "Manual registration (cash/transfer)",
+        "Services + total form",
+        "History per citizen"
+      ],
+      "coverage": "N/A",
+      "validation": "Form, payment registered"
+    },
+    {
+      "date": "21/10",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Frontend — Financial Dashboard",
+      "bullets": [
+        "KPIs: day/month revenue, transactions, success rate",
+        "Revenue by period chart",
+        "Distribution by service (pie chart)"
+      ],
+      "coverage": "N/A",
+      "validation": "KPIs OK, charts"
+    },
+    {
+      "date": "22/10",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Portal — Online Payments",
+      "bullets": [
+        "Checkout: items → summary → method → confirmation",
+        "'My Payments': history with filters",
+        "Public cost simulator"
+      ],
+      "coverage": "N/A",
+      "validation": "Portal payments functional"
+    },
+    {
+      "date": "23/10",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Financial Reports",
+      "bullets": [
+        "Daily, monthly, multi-currency",
+        "Reconciliation: pending vs confirmed",
+        "Export PDF and Excel"
+      ],
+      "coverage": "N/A",
+      "validation": "Reports, export OK"
+    },
+    {
+      "date": "25/10",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Financial E2E Tests and Sprint 5 Review",
+      "bullets": [
+        "E2E: request → pay → process advances → receipt",
+        "E2E: minor exemption → zero payment → direct approval",
+        "E2E: multi-currency EUR + AOA",
+        "k6: 100 simultaneous payments",
+        "Integrity: item sum = total, no numbering gaps",
+        "Complete audit trail",
+        "Deploy staging with financial data",
+        "Sprint 5 Demo, retrospective"
+      ],
+      "coverage": "N/A",
+      "validation": "E2E financial 10+, k6 OK"
+    },
+    {
+      "date": "26/10",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Limits and Financial Control",
+      "bullets": [
+        "Per-role limits: OFFICER ≤ €5000, CONSUL unlimited",
+        "Alerts > €1000 → consul",
+        "Separation of duties: creator ≠ approver"
+      ],
+      "coverage": "N/A",
+      "validation": "Limit, alert, separation"
+    },
+    {
+      "date": "27/10",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Automatic Reconciliation",
+      "bullets": [
+        "@Scheduled daily reconciliation",
+        "Discrepancy report",
+        "Anomaly detection"
+      ],
+      "coverage": "N/A",
+      "validation": "Inconsistency → discrepancy"
+    },
+    {
+      "date": "28/10",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Financial Edge Cases",
+      "bullets": [
+        "Partial payment, refund",
+        "Consistent rounding (2 decimals)",
+        "Rate changed during payment"
+      ],
+      "coverage": "N/A",
+      "validation": "Edge cases 8+"
+    },
+    {
+      "date": "29/10",
+      "day": "Thu",
+      "hours": 2,
+      "title": "5-Module Regression Tests",
+      "bullets": [
+        "Complete suite: registration + scheduling + passport + civil + payments",
+        "Cross-module integrity verification"
+      ],
+      "coverage": "N/A",
+      "validation": "100% green"
+    },
+    {
+      "date": "30/10",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Sprint 5 Documentation",
+      "bullets": [
+        "Civil and financial API OpenAPI",
+        "ADR-007 (payments), ADR-008 (certificates)"
+      ],
+      "coverage": "N/A",
+      "validation": "OpenAPI, ADRs"
+    },
+    {
+      "date": "01/11",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Buffer / Sprint 6 Preparation",
+      "bullets": [
+        "Delayed tasks",
+        "End-to-end 5-module regression",
+        "Prepare quality and security checklist",
+        "Prepare k6 scripts for load testing",
+        "Start production deploy checklist"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging stable, 5 modules"
+    },
+    {
+      "date": "02/11",
+      "day": "Mon",
+      "hours": 2,
+      "title": "SonarQube — All Modules",
+      "bullets": [
+        "Resolve bugs and vulnerabilities",
+        "Priority code smells",
+        "Outdated dependencies"
+      ],
+      "coverage": "N/A",
+      "validation": "Quality gate passes"
+    },
+    {
+      "date": "03/11",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Global UX Improvements",
+      "bullets": [
+        "Skeleton loaders on all listings",
+        "Visual feedback on all actions",
+        "Consistent PT error messages"
+      ],
+      "coverage": "N/A",
+      "validation": "Consistent UX"
+    },
+    {
+      "date": "04/11",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Complete API Documentation",
+      "bullets": [
+        "Verify ALL endpoints OpenAPI",
+        "Request/response examples",
+        "Published Swagger UI"
+      ],
+      "coverage": "N/A",
+      "validation": "Complete OpenAPI"
+    },
+    {
+      "date": "05/11",
+      "day": "Thu",
+      "hours": 2,
+      "title": "User Manual — Structure",
+      "bullets": [
+        "PT manual structure for staff",
+        "Sections: Login, Citizens, Scheduling, Passports, Civil, Payments",
+        "First screenshots"
+      ],
+      "coverage": "N/A",
+      "validation": "Structure created"
+    },
+    {
+      "date": "06/11",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Production Infra Preparation",
+      "bullets": [
+        "Hetzner specs: 3×CX41 + CCX31 + CX21",
+        "DNS and SSL plan",
+        "Backup and disaster recovery plan"
+      ],
+      "coverage": "N/A",
+      "validation": "Specs defined"
+    },
+    {
+      "date": "08/11",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Final Staging Deploy and Validation",
+      "bullets": [
+        "Complete 5-module staging deploy",
+        "Smoke tests all flows",
+        "Realistic data: 100+ citizens, 50+ passports, 30+ civil acts",
+        "Cross-module end-to-end validation",
+        "Bug fixes",
+        "Prepare UAT",
+        "Staging deployment documentation",
+        "Checkpoint: ready for Sprint 6"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging complete and stable"
+    }
+  ],
+  "6": [
+    {
+      "date": "09/11",
+      "day": "Mon",
+      "hours": 2,
+      "title": "OWASP ZAP — Scan",
+      "bullets": [
+        "OWASP ZAP spider + active scan staging",
+        "Catalog vulnerabilities",
+        "Prioritize: Critical > High > Medium"
+      ],
+      "coverage": "N/A",
+      "validation": "Scan complete, report"
+    },
+    {
+      "date": "10/11",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Vulnerability Remediation (1/2)",
+      "bullets": [
+        "SQL Injection: parameterized queries",
+        "XSS: sanitization, CSP header",
+        "CSRF protection"
+      ],
+      "coverage": "N/A",
+      "validation": "Re-scan confirms fixes"
+    },
+    {
+      "date": "11/11",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Vulnerability Remediation (2/2)",
+      "bullets": [
+        "Security headers: HSTS, X-Frame-Options",
+        "Rate limiting public endpoints",
+        "JWT: adequate expiration, no sensitive data"
+      ],
+      "coverage": "N/A",
+      "validation": "Headers, rate limiting OK"
+    },
+    {
+      "date": "12/11",
+      "day": "Thu",
+      "hours": 2,
+      "title": "GDPR — Export (DSAR)",
+      "bullets": [
+        "GET /gdpr/export/{citizenId}: JSON/PDF",
+        "Include all data: personal, docs, processes, payments",
+        "DSAR request logging"
+      ],
+      "coverage": "N/A",
+      "validation": "Complete export, log OK"
+    },
+    {
+      "date": "13/11",
+      "day": "Fri",
+      "hours": 2,
+      "title": "GDPR — Erasure",
+      "bullets": [
+        "DELETE /gdpr/erase/{citizenId}: anonymize",
+        "Consent management",
+        "Retention: >5 years → anonymized"
+      ],
+      "coverage": "N/A",
+      "validation": "Anonymize, consent, retention"
+    },
+    {
+      "date": "15/11",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Performance and Load Testing",
+      "bullets": [
+        "k6: login → search → schedule (realistic)",
+        "50 virtual users 10 min",
+        "100 virtual users 5 min (stress)",
+        "Identify and optimize bottlenecks",
+        "Endurance: 20 users 1 hour (leaks)",
+        "Document p50, p95, p99, throughput"
+      ],
+      "coverage": "N/A",
+      "validation": "p95 < 500ms, 0 errors, no leaks"
+    },
+    {
+      "date": "16/11",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Accessibility — Audit",
+      "bullets": [
+        "axe-core + Lighthouse all pages",
+        "Min contrast 4.5:1",
+        "ARIA labels on interactive elements, forms, tables"
+      ],
+      "coverage": "N/A",
+      "validation": "Lighthouse A11y > 90"
+    },
+    {
+      "date": "17/11",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Accessibility — Keyboard",
+      "bullets": [
+        "Keyboard navigation all flows",
+        "Skip-to-content, focus modals",
+        "Test screen reader"
+      ],
+      "coverage": "N/A",
+      "validation": "Complete keyboard, reader OK"
+    },
+    {
+      "date": "18/11",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Operational Runbooks",
+      "bullets": [
+        "Deploy: step by step + checklist",
+        "Rollback: revert in < 30 min",
+        "Disaster recovery: restore backup"
+      ],
+      "coverage": "N/A",
+      "validation": "Runbooks reviewed"
+    },
+    {
+      "date": "19/11",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Complete User Manual",
+      "bullets": [
+        "Complete all sections",
+        "Screenshots of each flow",
+        "FAQ and troubleshooting"
+      ],
+      "coverage": "N/A",
+      "validation": "Manual complete"
+    },
+    {
+      "date": "20/11",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Portal — Final Consolidation",
+      "bullets": [
+        "Verify all modules on citizen portal",
+        "Complete i18n 4 languages",
+        "PWA: offline, install prompt"
+      ],
+      "coverage": "N/A",
+      "validation": "Portal complete, i18n OK"
+    },
+    {
+      "date": "22/11",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Production Infrastructure",
+      "bullets": [
+        "Provision Hetzner: 3×CX41 + CCX31 MySQL + CX21 Redis",
+        "k3s Kubernetes cluster",
+        "Helm charts with production values",
+        "DNS + SSL Let's Encrypt (cert-manager)",
+        "Velero backup: daily MySQL, weekly full",
+        "Test deploy, healthchecks, SSL, backup/restore"
+      ],
+      "coverage": "N/A",
+      "validation": "Cluster OK, SSL, backup verified"
+    },
+    {
+      "date": "23/11",
+      "day": "Mon",
+      "hours": 2,
+      "title": "GitHub Actions — Production Deploy",
+      "bullets": [
+        "cd-production.yml: build → push → deploy K8s with approval",
+        "Blue-green deployment",
+        "Slack/email notification"
+      ],
+      "coverage": "N/A",
+      "validation": "Manual trigger, approval, deploy"
+    },
+    {
+      "date": "24/11",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Rollback and Health Checks",
+      "bullets": [
+        "Automatic rollback if health fails 5 min",
+        "Readiness and liveness probes all pods",
+        "Emergency manual rollback script"
+      ],
+      "coverage": "N/A",
+      "validation": "Automatic rollback works"
+    },
+    {
+      "date": "25/11",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Production DB Migrations",
+      "bullets": [
+        "Flyway automatic on deploy",
+        "Backward-compatible (never remove columns)",
+        "Test migration rollback"
+      ],
+      "coverage": "N/A",
+      "validation": "Staging migration = prod"
+    },
+    {
+      "date": "26/11",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Production Seed Data",
+      "bullets": [
+        "Official fees, posts, configs",
+        "Keycloak users: admin, consul (MFA)",
+        "No test data"
+      ],
+      "coverage": "N/A",
+      "validation": "Seed verified"
+    },
+    {
+      "date": "27/11",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Production Monitoring",
+      "bullets": [
+        "Prometheus + Grafana production",
+        "Dashboards: system, application, business",
+        "Alerts: disk > 80%, CPU > 85%, 5xx > 0.5%"
+      ],
+      "coverage": "N/A",
+      "validation": "Dashboards, alerts OK"
+    },
+    {
+      "date": "29/11",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Production MVP Deploy",
+      "bullets": [
+        "Pre-deploy checklist: backups, rollback, communication",
+        "Deploy: migrations → backend → frontend → gateway",
+        "Health checks all services",
+        "Smoke tests: login, citizen, schedule, passport, civil, payment",
+        "SSL, CORS, rate limiting, security headers",
+        "Automatic backup + restore test",
+        "Manual: production screenshots"
+      ],
+      "coverage": "N/A",
+      "validation": "Production operational, backup OK"
+    },
+    {
+      "date": "30/11",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Production Security Checks",
+      "bullets": [
+        "OWASP ZAP passive scan production",
+        "Dependabot: zero vulnerabilities",
+        "Sensitive endpoints authenticated"
+      ],
+      "coverage": "N/A",
+      "validation": "Zero high/critical"
+    },
+    {
+      "date": "01/12",
+      "day": "Tue",
+      "hours": 2,
+      "title": "UAT — Session 1",
+      "bullets": [
+        "Session with 2-3 staff: registration and scheduling",
+        "Document feedback",
+        "Prioritize issues"
+      ],
+      "coverage": "N/A",
+      "validation": "Feedback documented"
+    },
+    {
+      "date": "02/12",
+      "day": "Wed",
+      "hours": 2,
+      "title": "UAT — Session 2",
+      "bullets": [
+        "Session: passports and civil registry",
+        "Document feedback",
+        "Classify: blocker, important, minor"
+      ],
+      "coverage": "N/A",
+      "validation": "Feedback documented"
+    },
+    {
+      "date": "03/12",
+      "day": "Thu",
+      "hours": 2,
+      "title": "UAT Fixes — Blockers",
+      "bullets": [
+        "Fix blocker issues",
+        "Deploy hotfixes if needed",
+        "Re-test with users"
+      ],
+      "coverage": "N/A",
+      "validation": "Blockers resolved"
+    },
+    {
+      "date": "04/12",
+      "day": "Fri",
+      "hours": 2,
+      "title": "UAT Fixes — Important",
+      "bullets": [
+        "Fix important issues",
+        "UX improvements based on feedback",
+        "Deploy update"
+      ],
+      "coverage": "N/A",
+      "validation": "Important issues resolved"
+    },
+    {
+      "date": "06/12",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Training and Go-Live Preparation",
+      "bullets": [
+        "3h remote training session: all modules",
+        "Practical exercises: registration → passport → payment",
+        "Session recording",
+        "Printed/PDF manual distributed",
+        "FAQ based on training questions",
+        "Support channel configuration",
+        "Final verification all modules",
+        "Internal communication: go-live date"
+      ],
+      "coverage": "N/A",
+      "validation": "Training completed, channel ready"
+    },
+    {
+      "date": "07/12",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Official Go-Live",
+      "bullets": [
+        "Public access Citizen Portal",
+        "Support channel: email + form",
+        "Official launch communication"
+      ],
+      "coverage": "N/A",
+      "validation": "Portal public, support active"
+    },
+    {
+      "date": "08/12",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Day 1 Monitoring",
+      "bullets": [
+        "Monitor logs, metrics, alerts",
+        "Resolve emerging issues",
+        "Backup verified with real data"
+      ],
+      "coverage": "N/A",
+      "validation": "Zero incidents day 1"
+    },
+    {
+      "date": "09/12",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Day 2-3 Monitoring",
+      "bullets": [
+        "Track usage patterns",
+        "Performance with real load",
+        "Adjust rate limiting if needed"
+      ],
+      "coverage": "N/A",
+      "validation": "Stable metrics"
+    },
+    {
+      "date": "10/12",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Post-Launch Fixes",
+      "bullets": [
+        "Fix bugs reported day 1-3",
+        "Deploy hotfix",
+        "User communication"
+      ],
+      "coverage": "N/A",
+      "validation": "Bugs resolved"
+    },
+    {
+      "date": "11/12",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Post-Launch Optimizations",
+      "bullets": [
+        "Cache tuning with real data",
+        "Slow queries identified → indexes",
+        "UX adjustments based on real usage"
+      ],
+      "coverage": "N/A",
+      "validation": "Performance optimized"
+    },
+    {
+      "date": "13/12",
+      "day": "Sun",
+      "hours": 10,
+      "title": "First Week Stabilization",
+      "bullets": [
+        "First week report: metrics, issues, feedback",
+        "Verify backups with real data",
+        "Resolve pending issues",
+        "Monitor trends",
+        "Configuration adjustments based on usage",
+        "Document lessons learned",
+        "Plan maintenance: 5-10h/week",
+        "Stakeholder status communication"
+      ],
+      "coverage": "N/A",
+      "validation": "Production stable, report OK"
+    },
+    {
+      "date": "14/12",
+      "day": "Mon",
+      "hours": 2,
+      "title": "Final MVP Report",
+      "bullets": [
+        "Metrics: users, transactions, uptime",
+        "Resolved vs pending issues",
+        "Performance: p50, p95 in production"
+      ],
+      "coverage": "N/A",
+      "validation": "Report complete"
+    },
+    {
+      "date": "15/12",
+      "day": "Tue",
+      "hours": 2,
+      "title": "Technical Debt and Backlog",
+      "bullets": [
+        "Catalog technical debt",
+        "Prioritize items for Phase 2",
+        "Effort estimates"
+      ],
+      "coverage": "N/A",
+      "validation": "Backlog prioritized"
+    },
+    {
+      "date": "16/12",
+      "day": "Wed",
+      "hours": 2,
+      "title": "Phase 2 Backlog",
+      "bullets": [
+        "Future modules: Visas, Notarization, Chatbot, Video Call",
+        "Angola integrations (MIREX, SMEP)",
+        "Estimate: 6-9 additional months"
+      ],
+      "coverage": "N/A",
+      "validation": "Roadmap defined"
+    },
+    {
+      "date": "17/12",
+      "day": "Thu",
+      "hours": 2,
+      "title": "Formal Handover",
+      "bullets": [
+        "Complete technical documentation",
+        "Access and credentials",
+        "Runbooks and manuals",
+        "Source code and repositories"
+      ],
+      "coverage": "N/A",
+      "validation": "Handover complete"
+    },
+    {
+      "date": "18/12",
+      "day": "Fri",
+      "hours": 2,
+      "title": "Maintenance Plan",
+      "bullets": [
+        "Maintenance contract: 5-10h/week",
+        "SLA: critical 4h, high 24h, medium 72h",
+        "Reporting and escalation process"
+      ],
+      "coverage": "N/A",
+      "validation": "Plan agreed"
+    },
+    {
+      "date": "20/12",
+      "day": "Sun",
+      "hours": 10,
+      "title": "Final Retrospective and Closure",
+      "bullets": [
+        "Final MVP retrospective with stakeholders",
+        "What worked, what to improve",
+        "Consular team feedback",
+        "Celebration: MVP delivered and operational",
+        "Final verification: all modules, backup, monitoring",
+        "Update final documentation",
+        "Formal closure of MVP project",
+        "Transition to maintenance mode"
+      ],
+      "coverage": "N/A",
+      "validation": "MVP closed, maintenance active"
+    }
+  ]
+}

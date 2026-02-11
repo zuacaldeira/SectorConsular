@@ -1,0 +1,82 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+// Angola visual identity
+:root {
+  --angola-red: #CC092F;
+  --angola-black: #1A1A1A;
+  --angola-gold: #F4B400;
+  --color-blue: #3884F4;
+  --color-green: #2EA043;
+  --color-purple: #8957E5;
+  --color-teal: #009688;
+  --surface: #FFFFFF;
+  --surface-alt: #F6F8FA;
+  --border: #D0D7DE;
+  --border-light: #E8EBED;
+  --text-primary: #24292F;
+  --text-secondary: #57606A;
+  --text-muted: #8B949E;
+}
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  margin: 0;
+  height: 100%;
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--surface-alt);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// Status colors
+.status-planned { color: var(--text-muted); }
+.status-active, .status-in-progress { color: var(--color-blue); }
+.status-completed { color: var(--color-green); }
+.status-blocked { color: var(--angola-red); }
+.status-skipped { color: var(--text-secondary); }
+
+// Angola-themed buttons
+.btn-primary {
+  background-color: var(--angola-red) !important;
+  color: white !important;
+}
+
+.btn-gold {
+  background-color: var(--angola-gold) !important;
+  color: var(--angola-black) !important;
+}
+
+// Card styles
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+// Scrollbar
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-alt); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }

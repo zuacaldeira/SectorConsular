@@ -1,0 +1,22 @@
+# Backend
+backend/target/
+*.class
+*.jar
+*.jar.original
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Zip archives (source specs already extracted)
+*.zip
