@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:sgcd_pm_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false;MODE=MYSQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+sgcd-pm:
+  jwt:
+    secret: test-secret-key-for-unit-testing-minimum-32-bytes
+    expiration: 86400000
+  stakeholder:
+    token: test-stakeholder-token
+
+server:
+  port: 0
+  servlet:
+    context-path: /api
