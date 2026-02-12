@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -59,9 +59,9 @@ import { HoursPipe } from '../../shared/pipes/hours.pipe';
 export class SprintListComponent implements OnInit {
   sprints: Sprint[] = [];
 
-  constructor(private sprintService: SprintService) {}
+  constructor(private sprintService: SprintService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.sprintService.findAll().subscribe(s => this.sprints = s);
+    this.sprintService.findAll().subscribe(s => { this.sprints = s; this.cdr.markForCheck(); });
   }
 }

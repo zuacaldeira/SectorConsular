@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -84,16 +84,17 @@ export class ReportsComponent implements OnInit {
   constructor(
     private api: ApiService,
     private sprintService: SprintService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.sprintService.findAll().subscribe(s => this.sprints = s);
+    this.sprintService.findAll().subscribe(s => { this.sprints = s; this.cdr.markForCheck(); });
     this.loadReports();
   }
 
   loadReports(): void {
-    this.api.get<Report[]>('/reports').subscribe(r => this.reports = r);
+    this.api.get<Report[]>('/reports').subscribe(r => { this.reports = r; this.cdr.markForCheck(); });
   }
 
   generate(sprintId: number): void {
@@ -103,8 +104,9 @@ export class ReportsComponent implements OnInit {
         this.snackBar.open('Relatório gerado!', 'OK', { duration: 3000 });
         this.loadReports();
         this.generating = false;
+        this.cdr.markForCheck();
       },
-      error: () => { this.generating = false; }
+      error: () => { this.generating = false; this.cdr.markForCheck(); }
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -92,7 +92,7 @@ export class CalendarComponent implements OnInit {
   monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void { this.load(); }
 
@@ -103,6 +103,7 @@ export class CalendarComponent implements OnInit {
       // Convert Sunday=0 to Monday-based: Mon=0, Tue=1, ..., Sun=6
       const mondayBased = firstDay === 0 ? 6 : firstDay - 1;
       this.leadingBlanks = Array(mondayBased);
+      this.cdr.markForCheck();
     });
   }
 

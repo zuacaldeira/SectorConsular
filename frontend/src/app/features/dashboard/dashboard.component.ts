@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -186,12 +186,12 @@ export class DashboardComponent implements OnInit {
   dashboard: Dashboard | null = null;
   error: string | null = null;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.dashboardService.getDeveloperDashboard().subscribe({
-      next: d => this.dashboard = d,
-      error: err => this.error = err.message || JSON.stringify(err)
+      next: d => { this.dashboard = d; this.cdr.markForCheck(); },
+      error: err => { this.error = err.message || JSON.stringify(err); this.cdr.markForCheck(); }
     });
   }
 

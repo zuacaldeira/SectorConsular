@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -141,7 +141,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     public auth: AuthService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -151,6 +152,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
         if (!result.matches) {
           this.sidebarOpen = false;
         }
+        this.cdr.markForCheck();
       });
   }
 

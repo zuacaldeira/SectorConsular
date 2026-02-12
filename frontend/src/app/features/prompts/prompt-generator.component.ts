@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -48,10 +48,10 @@ import { Prompt } from '../../core/models/task.model';
 export class PromptGeneratorComponent implements OnInit {
   prompt: Prompt | null = null;
 
-  constructor(private api: ApiService, private snackBar: MatSnackBar) {}
+  constructor(private api: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.api.get<Prompt>('/prompts/today').subscribe(p => this.prompt = p);
+    this.api.get<Prompt>('/prompts/today').subscribe(p => { this.prompt = p; this.cdr.markForCheck(); });
   }
 
   copy(): void {

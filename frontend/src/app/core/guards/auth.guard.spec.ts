@@ -16,6 +16,9 @@ describe('authGuard', () => {
           useValue: {
             isLoggedIn: jest.fn(),
             getToken: jest.fn(),
+            isTokenExpired: jest.fn().mockReturnValue(false),
+            getRefreshToken: jest.fn().mockReturnValue(null),
+            refreshTokens: jest.fn(),
           },
         },
         {

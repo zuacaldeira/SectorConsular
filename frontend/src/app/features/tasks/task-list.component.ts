@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -113,11 +113,12 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private sprintService: SprintService
+    private sprintService: SprintService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.sprintService.findAll().subscribe(s => this.sprints = s);
+    this.sprintService.findAll().subscribe(s => { this.sprints = s; this.cdr.markForCheck(); });
     this.load();
   }
 
@@ -130,6 +131,7 @@ export class TaskListComponent implements OnInit {
     this.taskService.findAll(params).subscribe(p => {
       this.tasks = p.content;
       this.totalElements = p.totalElements;
+      this.cdr.markForCheck();
     });
   }
 

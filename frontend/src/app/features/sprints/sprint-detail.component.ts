@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, KeyValuePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -97,16 +97,18 @@ export class SprintDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private sprintService: SprintService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.sprintService.findById(id).subscribe(s => this.sprint = s);
-    this.sprintService.getProgress(id).subscribe(p => this.progress = p);
+    this.sprintService.findById(id).subscribe(s => { this.sprint = s; this.cdr.markForCheck(); });
+    this.sprintService.getProgress(id).subscribe(p => { this.progress = p; this.cdr.markForCheck(); });
     this.taskService.findAll({ sprint: id, size: 100 }).subscribe(page => {
       this.tasks = page.content;
       this.groupByWeek();
+      this.cdr.markForCheck();
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -224,7 +224,8 @@ export class TaskDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private taskService: TaskService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -235,12 +236,13 @@ export class TaskDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.taskService.findById(id).subscribe(t => {
       this.task = t;
+      this.cdr.markForCheck();
       this.loadExecutions(t.id);
     });
   }
 
   loadExecutions(taskId: number): void {
-    this.taskService.getExecutions(taskId).subscribe(e => this.executions = e);
+    this.taskService.getExecutions(taskId).subscribe(e => { this.executions = e; this.cdr.markForCheck(); });
   }
 
   startTask(): void {
@@ -251,8 +253,9 @@ export class TaskDetailComponent implements OnInit {
         this.task = t;
         this.snackBar.open('Tarefa iniciada!', 'OK', { duration: 3000 });
         this.loading = false;
+        this.cdr.markForCheck();
       },
-      error: () => this.loading = false
+      error: () => { this.loading = false; this.cdr.markForCheck(); }
     });
   }
 
@@ -268,8 +271,9 @@ export class TaskDetailComponent implements OnInit {
         this.completionNotes = '';
         this.snackBar.open('Tarefa concluída!', 'OK', { duration: 3000 });
         this.loading = false;
+        this.cdr.markForCheck();
       },
-      error: () => this.loading = false
+      error: () => { this.loading = false; this.cdr.markForCheck(); }
     });
   }
 
@@ -284,8 +288,9 @@ export class TaskDetailComponent implements OnInit {
           this.task = t;
           this.snackBar.open('Tarefa bloqueada', 'OK', { duration: 3000 });
           this.loading = false;
+          this.cdr.markForCheck();
         },
-        error: () => this.loading = false
+        error: () => { this.loading = false; this.cdr.markForCheck(); }
       });
     });
   }
@@ -298,14 +303,15 @@ export class TaskDetailComponent implements OnInit {
         this.task = t;
         this.snackBar.open('Tarefa ignorada', 'OK', { duration: 3000 });
         this.loading = false;
+        this.cdr.markForCheck();
       },
-      error: () => this.loading = false
+      error: () => { this.loading = false; this.cdr.markForCheck(); }
     });
   }
 
   loadPrompt(): void {
     if (!this.task) return;
-    this.taskService.getPrompt(this.task.id).subscribe(p => this.prompt = p);
+    this.taskService.getPrompt(this.task.id).subscribe(p => { this.prompt = p; this.cdr.markForCheck(); });
   }
 
   copyPrompt(): void {

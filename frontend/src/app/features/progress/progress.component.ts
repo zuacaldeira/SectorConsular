@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -307,12 +307,13 @@ export class ProgressComponent implements OnInit {
   sprintColumns = ['sprint', 'name', 'status', 'sessions', 'hours', 'tasks', 'progress'];
   private maxHours = 0;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.dashboardService.getProjectProgress().subscribe(d => {
       this.data = d;
       this.maxHours = Math.max(...d.sprints.map(s => Math.max(s.totalHours, s.actualHours || 0)));
+      this.cdr.markForCheck();
     });
   }
 

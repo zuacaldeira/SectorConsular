@@ -14,6 +14,11 @@ describe('jwtInterceptor', () => {
           provide: AuthService,
           useValue: {
             getToken: jest.fn(),
+            isTokenExpired: jest.fn().mockReturnValue(false),
+            isTokenExpiringSoon: jest.fn().mockReturnValue(false),
+            getRefreshToken: jest.fn().mockReturnValue(null),
+            refreshTokens: jest.fn(),
+            logout: jest.fn(),
           },
         },
       ],

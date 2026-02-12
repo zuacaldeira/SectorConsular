@@ -150,7 +150,9 @@ describe('AuthService', () => {
 
   describe('isLoggedIn', () => {
     it('should return true when token exists in localStorage', () => {
-      localStorage.setItem('sgcd_pm_token', 'some-token');
+      // Need a valid JWT with exp in the future for isTokenExpired() check
+      const payload = btoa(JSON.stringify({ exp: Math.floor(Date.now() / 1000) + 3600 }));
+      localStorage.setItem('sgcd_pm_token', `h.${payload}.s`);
       expect(service.isLoggedIn()).toBe(true);
     });
 
