@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -172,9 +172,12 @@ import { HoursPipe } from '../../shared/pipes/hours.pipe';
 export class StakeholderComponent implements OnInit {
   data: StakeholderDashboard | null = null;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private dashboardService: DashboardService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.dashboardService.getStakeholderDashboard().subscribe(d => this.data = d);
+    this.dashboardService.getStakeholderDashboard().subscribe(d => {
+      this.data = d;
+      this.cdr.markForCheck();
+    });
   }
 }
